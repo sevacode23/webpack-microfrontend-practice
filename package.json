@@ -1,0 +1,12 @@
+{
+  "name": "webpack-monorepo-practice",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "start:host": "cd apps/host && npm start"
+  }
+}
