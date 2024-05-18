@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { calculateSum } from '@mono-practice/shared';
 
 import mountainImage from '@/assets/images/mountain.webp';
@@ -20,12 +20,20 @@ export const Main = () => {
     <div>
       <p>{calculateSum(11, 17)}</p>
 
-      <img
-        className={classes.logo}
-        src={shineImage}
-        data-testid="testId.shine"
-      />
-      <img className={classes.logo} src={mountainImage} />
+      <div>
+        <Link to="/about">About</Link>
+        <br />
+        <Link to="/shop">Shop</Link>
+      </div>
+
+      <div>
+        <img
+          className={classes.logo}
+          src={shineImage}
+          data-testid="testId.shine"
+        />
+        <img className={classes.logo} src={mountainImage} />
+      </div>
 
       <p>{counter}</p>
 
