@@ -1,8 +1,10 @@
-import { IEnv, buildConfig } from '@mono-practice/webpack';
 import { resolve } from 'path';
+import { IEnv, buildConfig } from '@mono-practice/webpack';
+
+import { buildFederationPlugin } from './webpack-build';
 
 export default (env: IEnv) => {
-  const { mode, port, isAnalyze } = env;
+  const { mode, port = 3001, isAnalyze } = env;
 
   const isDev = mode === 'development';
 
@@ -10,11 +12,11 @@ export default (env: IEnv) => {
   const pathPublic = resolve(__dirname, 'public');
   const pathBuild = resolve(__dirname, 'build');
 
-  return buildConfig({
+  const config = buildConfig({
     isDev,
     paths: {
       src: pathSrc,
-      entry: resolve(pathSrc, 'index.tsx'),
+      entry: resolve(pathSrc, 'index.ts'),
       output: pathBuild,
       html: resolve(pathPublic, 'index.html'),
       favicon: resolve(pathPublic, 'favicon.ico'),
@@ -24,4 +26,8 @@ export default (env: IEnv) => {
     port,
     isAnalyze,
   });
+
+  config.plugins.push(buildFederationPlugin());
+
+  return config;
 };

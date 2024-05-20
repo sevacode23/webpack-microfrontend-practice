@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 
-import { App } from './screens/app';
+import { App } from './router';
 
 const root = document.getElementById('root');
 

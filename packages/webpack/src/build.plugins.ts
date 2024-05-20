@@ -17,6 +17,7 @@ export const buildPlugins = (
     new HtmlWebpackPlugin({
       template: paths.html,
       favicon: paths.favicon,
+      publicPath: '/',
     }),
 
     new MiniCssExtractPlugin({

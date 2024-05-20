@@ -1,17 +1,17 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Main } from './main';
-import { AboutLazy } from './about';
+import { Main } from '@/screens/main';
+import { AboutLazy } from '@/screens/about';
 
 import { ComponentLoader } from '@/components/component-loader';
 
-const router = createBrowserRouter([
+const routes = [
   {
-    path: '/',
+    path: '/admin',
     element: <Main />,
     children: [
       {
-        path: '/about',
+        path: '/admin/about',
         element: (
           <ComponentLoader>
             <AboutLazy />
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
 
-export const App = () => <RouterProvider router={router} />;
+const router = createBrowserRouter(routes);
+
+export const AppRouter = () => <RouterProvider router={router} />;
+
+export default routes;
